@@ -1,0 +1,93 @@
+/*
+ * Form rows. Built only on Filament's own color variables so it fits stock
+ * Filament and any theme; themes can restyle through the --fi-rows-* tokens.
+ */
+:root {
+    --fi-rows-divider: var(--gray-200);
+    --fi-rows-description: var(--gray-500);
+    --fi-rows-control-width: 22rem;
+    --fi-rows-padding-y: 1rem;
+    --fi-rows-padding-x: 1.5rem;
+}
+
+:root.dark {
+    --fi-rows-divider: color-mix(in oklab, white 10%, transparent);
+    --fi-rows-description: var(--gray-400);
+}
+
+/* The section's content loses its padding; each row carries its own and the
+   rows are divided by hairlines. The content is a size container so rows
+   split by the space they actually have, not the viewport: a Rows section in
+   a narrow column or a modal stacks on its own. */
+.fi-rows > .fi-section > .fi-section-content-ctn > .fi-section-content {
+    container: fi-rows / inline-size;
+    padding: 0;
+    row-gap: 0;
+}
+
+.fi-rows > .fi-section > .fi-section-content-ctn > .fi-section-content > .fi-grid-col {
+    padding: var(--fi-rows-padding-y) var(--fi-rows-padding-x);
+}
+
+.fi-rows > .fi-section > .fi-section-content-ctn > .fi-section-content > .fi-grid-col + .fi-grid-col {
+    border-top: 1px solid var(--fi-rows-divider);
+}
+
+.fi-rows-field,
+.fi-rows-row {
+    display: grid;
+    gap: 0.5rem;
+}
+
+@container fi-rows (min-width: 36rem) {
+    .fi-rows-field.fi-rows-field-has-label:not(.fi-rows-field-stacked),
+    .fi-rows-row {
+        grid-template-columns: minmax(0, 1fr) minmax(0, var(--fi-rows-control-width));
+        column-gap: 2rem;
+        align-items: center;
+    }
+
+    /* Switches and lone checkboxes sit at the row's end rather than mid-row. */
+    .fi-rows-field:not(.fi-rows-field-stacked) > .fi-rows-content-col > .fi-toggle,
+    .fi-rows-field:not(.fi-rows-field-stacked) > .fi-rows-content-col > .fi-checkbox-input {
+        align-self: flex-end;
+    }
+}
+
+.fi-rows-field-stacked {
+    gap: 0.75rem;
+}
+
+.fi-rows-label-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    min-width: 0;
+}
+
+/* Filament styles field labels only inside a field, so an action row's
+   label is given the same type here. */
+.fi-rows-row-label {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    font-weight: 500;
+    color: var(--gray-950);
+}
+
+:root.dark .fi-rows-row-label {
+    color: white;
+}
+
+.fi-rows-description,
+.fi-rows-description .fi-sc-text {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--fi-rows-description);
+}
+
+.fi-rows-content-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 0;
+}
