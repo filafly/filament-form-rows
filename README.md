@@ -7,10 +7,12 @@ Settings-style form rows for Filament. Each field gets its own full-width row, w
 
 The layout is built on Filament's own field wrapper hook, so it works with every field, including custom ones, without overriding any Filament views. It uses Filament's color variables, so it fits stock Filament and any theme.
 
+![A settings form with Form Rows: each field's label and help text on the left, its control on the right, hairlines between rows, a stacked textarea and a danger-zone action row](https://raw.githubusercontent.com/filafly/filament-form-rows/main/art/screenshot.png)
+
 ## Requirements
 
 - PHP 8.2+
-- Filament v4 or v5
+- Filament v4 or v5 (tested with 4.16 on Laravel 12 and 5.11 on Laravel 13)
 
 ## Installation
 
@@ -139,6 +141,12 @@ The main hooks for further styling are `.fi-rows` (the section), `.fi-rows-field
 ```bash
 composer test
 ```
+
+`npm test` runs the same suite (after `composer update`); it exists so the ship gate can find the tests, and `package.json` is left out of Composer installs.
+
+## From FilaFly
+
+Form Rows comes from Citrus, one of FilaFly's premium themes for Filament panels: Lucent, Prizm, Cypher and Citrus. [Browse the themes](https://filafly.com/themes?utm_source=github&utm_medium=readme&utm_campaign=filament-form-rows).
 
 ## Credits
 
