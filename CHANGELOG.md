@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.1 - 2026-11-04
+
+- The package homepage now points to its page on filafly.com, with docs and a screenshot. No code changes.
+
 ## v1.0.0 - 2026-11-04
 
 First public release.
